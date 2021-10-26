@@ -5,10 +5,16 @@
   "repository": "https://github.com/RafaelCassiano30011/Task-List_Node.git",
   "author": "rafael <rafael.souza@agenciaeplus.com.br>",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   }
 }
