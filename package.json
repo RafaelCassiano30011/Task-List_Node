@@ -1,0 +1,14 @@
+{
+  "name": "Task-List_Node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/RafaelCassiano30011/Task-List_Node.git",
+  "author": "rafael <rafael.souza@agenciaeplus.com.br>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
