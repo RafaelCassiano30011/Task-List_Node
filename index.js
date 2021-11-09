@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import configureDataBase from "./src/data/index.js";
 
 dotenv.config();
 
@@ -19,19 +20,32 @@ app.get("/cade", (req, res) => {
   res.send("O ALAN ?");
 });
 
-app.get("/task", (req, res) => {
-  res.send(tasks);
+app.get("/task", async (req, res) => {
+  const dataBase = await configureDataBase();
+
+  const taskList = await dataBase.Task.find()
+
+
+  res.send(taskList);
 });
 
-app.post("/create", (req, res) => {
-  const { ...newTask } = req.body;
+app.post("/create", async (req, res) => {
+  const body = req.body;
 
-  newTask.done === true ? true : (newTask.done = false);
-  newTask.id = tasks.length + 1;
+  const dataBase = await configureDataBase();
 
-  tasks.push(newTask);
+  const newTask = await dataBase.Task.create(body);
 
-  res.send(tasks);
+  res.send(newTask);
+
+  // const { ...newTask } = req.body;
+
+  // newTask.done === true ? true : (newTask.done = false);
+  // newTask.id = tasks.length + 1;
+
+  // tasks.push(newTask);
+
+  // res.send(tasks);
 });
 
 const PORT = process.env.PORT;
