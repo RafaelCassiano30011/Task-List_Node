@@ -29,24 +29,7 @@ app.get("/task", async (req, res) => {
   res.send(taskList);
 });
 
-app.post("/create", async (req, res) => {
-  const body = req.body;
 
-  const dataBase = await configureDataBase();
-
-  const newTask = await dataBase.Task.create(body);
-
-  res.send(newTask);
-
-  // const { ...newTask } = req.body;
-
-  // newTask.done === true ? true : (newTask.done = false);
-  // newTask.id = tasks.length + 1;
-
-  // tasks.push(newTask);
-
-  // res.send(tasks);
-});
 
 const PORT = process.env.PORT;
 

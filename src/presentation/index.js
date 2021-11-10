@@ -1,14 +1,16 @@
 import express from "express";
+import UserService from "../services/user/index.js";
+import userRouter from "./routes/user/index.js";
 
 const configureApp = ({ models }) => {
   const app = express();
 
-  
   app.use(express.json());
+
+  app.use("/user", userRouter({ models }));
 
   app.get("/task", async (req, res) => {
     const taskList = await models.Task.find();
-
     res.send(taskList);
   });
 
@@ -19,6 +21,8 @@ const configureApp = ({ models }) => {
 
     res.send(newTask);
   });
+
+  app.post("/user/login", async (req, res) => {});
 
   return app;
 };
